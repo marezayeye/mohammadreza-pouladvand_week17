@@ -24,46 +24,36 @@ function contactReducer(state, action) {
 export function ContactProvider({ children }) {
   const [contacts, dispatch] = useReducer(contactReducer, initialState);
 
-  // loading contacts on component first load
+  // Load contacts from localStorage on mount
   useEffect(() => {
-    fetch("http://localhost:3000/contacts")
-      .then((res) => res.json())
-      .then((data) => {
-        dispatch({ type: "SET_CONTACTS", payload: data });
-      });
+    const stored = localStorage.getItem("contacts");
+    if (stored) {
+      dispatch({ type: "SET_CONTACTS", payload: JSON.parse(stored) });
+    }
   }, []);
 
-  // adding a new contact
-  const addContact = async (contact) => {
-    const res = await fetch("http://localhost:3000/contacts", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(contact),
-    });
-    const data = await res.json();
-    dispatch({ type: "ADD_CONTACT", payload: data });
+  // Save contacts to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
+
+  // Add a new contact
+  const addContact = (contact) => {
+    dispatch({ type: "ADD_CONTACT", payload: contact });
   };
 
-  // deleting a contact
-  const deleteContact = async (id) => {
-    await fetch(`http://localhost:3000/contacts/${id}`, { method: "DELETE" });
+  // Delete a contact
+  const deleteContact = (id) => {
     dispatch({ type: "DELETE_CONTACT", payload: id });
   };
 
-  // editing a contact
-  const editContact = async (contact) => {
-    const res = await fetch(`http://localhost:3000/contacts/${contact.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(contact),
-    });
-    const data = await res.json();
-    dispatch({ type: "EDIT_CONTACT", payload: data });
+  // Edit a contact
+  const editContact = (contact) => {
+    dispatch({ type: "EDIT_CONTACT", payload: contact });
   };
 
   // Batch delete contacts
-  const batchDeleteContacts = async (ids) => {
-    await Promise.all(ids.map(id => fetch(`http://localhost:3000/contacts/${id}`, { method: "DELETE" })));
+  const batchDeleteContacts = (ids) => {
     dispatch({ type: "SET_CONTACTS", payload: contacts.filter(c => !ids.includes(c.id)) });
   };
 
