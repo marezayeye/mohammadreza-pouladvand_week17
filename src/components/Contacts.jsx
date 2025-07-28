@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
 import { ContactContext } from "../context/ContactContext";
-import { v4 } from "uuid";
+
 
 import styles from "./Contacts.module.css";
 
-import ContactsList from "./ContactsList";
+import ContactsList from "./ContactsList.jsx";
 import inputs from "../constants/inputs.js";
+import DeletionModal from "./DeletionModal.jsx";
+
 
 function Contacts() {
   const [newContact, setNewContact] = useState({
@@ -85,15 +87,13 @@ function Contacts() {
         selectedIds={selectedIds}
         onCheck={handleCheck}
       />
-      {showModal && (
-        <div style={{ position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh", background: "rgba(0,0,0,0.3)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <div style={{ background: "white", padding: "2rem", borderRadius: "8px", boxShadow: "0 2px 8px rgba(0,0,0,0.2)" }}>
-            <p>Are you sure you want to delete {selectedIds.length} selected contact(s)?</p>
-            <button onClick={confirmDelete} style={{ marginRight: "1rem", background: "#e74c3c", color: "white", padding: "0.5rem 1rem", border: "none", borderRadius: "4px" }} disabled={isDeleting}>{isDeleting ? "Deleting..." : "Yes, Delete"}</button>
-            <button onClick={() => setShowModal(false)} style={{ padding: "0.5rem 1rem", border: "none", borderRadius: "4px" }} disabled={isDeleting}>Cancel</button>
-          </div>
-        </div>
-      )}
+      <DeletionModal
+        open={showModal}
+        onConfirm={confirmDelete}
+        onCancel={() => setShowModal(false)}
+        count={selectedIds.length}
+        isDeleting={isDeleting}
+      />
     </div>
   );
 }
