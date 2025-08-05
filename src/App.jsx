@@ -1,14 +1,17 @@
-import Header from "./components/Header.jsx"
-import Contacts from "./components/Contacts.jsx"
 import { ContactProvider } from "./context/ContactContext";
+
+import Header from "./components/Header.jsx";
+import Contacts from "./components/Contacts.jsx";
 
 function App() {
   return (
-    <ContactProvider>
+    <>
       <Header />
-      <Contacts />
-    </ContactProvider>
-  )
+      <ContactProvider>
+        <Contacts />
+      </ContactProvider>
+    </>
+  );
 }
 
-export default App
+export default App;

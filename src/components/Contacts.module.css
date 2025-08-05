@@ -4,70 +4,95 @@
   align-items: center;
 }
 
-.form {
+.formContainer {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   padding: 20px;
   margin-bottom: 20px;
   border-radius: 20px;
   box-shadow: #304ffe25 0px 7px 29px 0px;
 }
 
-.form input {
+.inputdiv {
   width: 45%;
+  margin: 10px;
+}
+
+.inputfield {
+  width: 100%;
+  height: 40px;
+  color: #304ffe !important;
+  border: 2px solid #304ffeb9;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding-left: 10px;
+}
+
+.formContainer button {
+  width: calc(100% - 40px);
+  height: 40px;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  background-color: #304ffe;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: 0.2s all ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .formContainer {
+    flex-direction: column;
+    width: 100%;
+    padding-left: 0px;
+  }
+  .inputdiv {
+    width: 100%;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+
+  .formContainer button {
+    width: 100%;
+  }
+}
+
+@media (hover: hover) {
+  .form button:hover {
+    box-shadow: #0c2ad487 0px 7px 29px 0px;
+  }
+}
+
+.alert {
+  width: 100%;
+  height: 40px;
+  margin: 5px 0 25px;
+}
+
+.alert p {
+  background-color: #ffbbee;
+  color: #f44336;
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.input {
+  width: 100%;
   padding: 10px;
   height: 40px;
-  margin: 10px;
+  margin: 10px 0;
   color: #304ffe !important;
   border: 2px solid #304ffeb9;
   border-radius: 5px;
   font-size: 1rem;
 }
-
-.form button {
-    width: calc(90% + 20px);
-    height: 40px;
-    padding: 10px;
-    margin: 10px;
-    cursor: pointer;
-    background-color: #304ffe;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    font-size: 1rem;
-    transition: 0.2s all ease-in-out;
+.error {
+  color: red;
+  font-size: 0.8em;
+  margin-bottom: 5px;
 }
-
-@media(hover:hover) {
-    .form button:hover {
-        box-shadow: #0c2ad487 0px 7px 29px 0px;
-    }
-}
-
-.alert {
-    width: 100%;
-    height: 40px;
-    margin: 5px 0 25px;
-}
-
-.alert p {
-    background-color: #ffbbee;
-    color: #f44336;
-    width: 100%;
-    padding: 10px;
-    border-radius: 20px;
-}
-
-@media (max-width: 500px){
-    .form input {
-        width: 90%;
-    }
-
-    .form button {
-        width: 90%;
-    }
-}
-
-
