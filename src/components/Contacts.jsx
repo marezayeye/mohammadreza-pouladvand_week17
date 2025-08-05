@@ -62,7 +62,7 @@ function Contacts() {
         {({ errors, touched }) => (
           <Form className={styles.formContainer}>
             {inputs.map((input, index) => (
-              <div key={index} className={styles.inputdiv} >
+              <div key={index} className={styles.inputdiv}>
                 <Field
                   type={input.type}
                   name={input.name}
@@ -72,7 +72,7 @@ function Contacts() {
                 <ErrorMessage
                   name={input.name}
                   component="div"
-                  className={styles.error}
+                  className={styles.errordiv}
                 />
               </div>
             ))}
