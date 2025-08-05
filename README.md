@@ -19,12 +19,22 @@ This project uses the **Flux architecture** for state management. The core conta
   
 
 - Add new contacts (name, last name, email, phone)
+![Demo](media/add_contact.gif)
+
+- Validate Form Data
+![Demo](media/validation.gif)
 
 - Edit existing contacts
+![Demo](media/edit_contact.gif)
 
-- Delete single or multiple contacts (with confirmation modal)
+- Delete single contact
+![Demo](media/delete_contact.gif)
 
-- Search contacts by name or last name (client-side, instant filtering)
+- Delete multiple contacts (with confirmation modal)
+![Demo](media/batch_deleting.gif)
+
+- Search contacts by name or last name (Typesense /client-side, instant filtering)
+![Demo](media/typesense.gif)
 
 - Select multiple contacts for batch deletion
 
@@ -54,9 +64,9 @@ This project uses the **Flux architecture** for state management. The core conta
 
 ```sh
 
-git clone https://github.com/marezayeye/mohammadreza-pouladvand_week16.git
+git clone https://github.com/marezayeye/mohammadreza-pouladvand_week17.git
 
-cd mohammadreza-pouladvand_week16
+cd mohammadreza-pouladvand_week17
 
 ```
 
@@ -88,4 +98,8 @@ npm run dev
 
 -  [uuid ](https://www.npmjs.com/package/uuid) (for generating valid and unique ids when mapping)
 
--  [json-server ](https://www.npmjs.com/package/json-server) (to server as a mock back-end in order to save/read data)
+-  [json-server ](https://www.npmjs.com/package/json-server) (to serve as a mock back-end in order to save/read data)
+
+-  [Formik](https://www.npmjs.com/package/formik)(used to Handle forms with ease)
+
+-  [yup](https://www.npmjs.com/package/yup)(Validate Form data on client-side)
