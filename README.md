@@ -19,24 +19,28 @@ This project uses the **Flux architecture** for state management. The core conta
   
 
 - Add new contacts (name, last name, email, phone)
+  
 ![Demo](media/add_contact.gif)
 
 - Validate Form Data
+  
 ![Demo](media/validation.gif)
 
 - Edit existing contacts
+  
 ![Demo](media/edit_contact.gif)
 
 - Delete single contact
+  
 ![Demo](media/delete_contact.gif)
 
 - Delete multiple contacts (with confirmation modal)
+  
 ![Demo](media/batch_deleting.gif)
 
 - Search contacts by name or last name (Typesense /client-side, instant filtering)
+  
 ![Demo](media/typesense.gif)
-
-- Select multiple contacts for batch deletion
 
 - Modular, reusable React components
 
